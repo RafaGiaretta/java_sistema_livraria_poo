@@ -14,9 +14,16 @@ public class Produto{
 	private Tipo tipo;
 
 
-
-	
 	public Produto() {
+
+	}
+	
+	public Produto(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	public Produto( Livro livro) {
+        this.livro = livro;;
 	}
 	
 	
@@ -33,7 +40,13 @@ public class Produto{
         this.tipo = tipo;
     }
 	
-
+    public Livro getLivro() {
+    	return livro;
+    }
+    
+    public Caderno getCaderno() {
+    	return caderno;
+    }
 
 	public Double getPreco() {
 		return preco;
@@ -47,16 +60,24 @@ public class Produto{
 		return quantidade;
 	}
 	
+	public void pedidoQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}	
+
+	public void removerEstoque(Integer quantidade) {
+		this.quantidade -= quantidade;
+	}
 	
 	public String toString() {
 		if (caderno == null) {
-			return "Tipo: " + tipo + ", " + livro + "Quantidade: " + quantidade +"\n";
+			return "Tipo: " + tipo + ", " + livro + "Quantidade: " + quantidade + " Preco: R$"+ preco +"\n";
 		}
 		else {
-			return "Tipo: " + tipo + ", " + caderno + "Quantidade: " + quantidade +"\n";
+			return "Tipo: " + tipo + ", " + caderno + "Quantidade: " + quantidade + " Preco: R$"+ preco +"\n";
 		}
 
 	}

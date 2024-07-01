@@ -1,6 +1,6 @@
 package utilitarios;
 
-public class LeitorDados {
+public  class LeitorDados {
 
 
 	

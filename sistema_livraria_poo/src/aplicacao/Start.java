@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import bancoDados.Banco;
 import utilitarios.MetodosCliente;
+import utilitarios.MetodosPedido;
 import utilitarios.MetodosProduto;
 
 public class Start {
@@ -48,7 +49,10 @@ public class Start {
 			break;
 		case 2:
 			MetodosProduto.menuProdutos(banco);
-			break;			
+			break;		
+		case 3:
+			MetodosPedido.menuPedidos(banco);
+			break;
 		case 4: 
 			System.out.println("Programa encerrado!");
 			System.exit(0);

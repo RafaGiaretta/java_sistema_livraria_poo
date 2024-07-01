@@ -11,7 +11,7 @@ import entidades.Produto;
 public class Banco {
 	
 	private List<Produto> produtos = new ArrayList<>();
-	private List<Pedido> pedidos;
+	private List<Pedido> pedidos = new ArrayList<>();
 	private List<Cupom> cupons;
 	private List<Cliente> cliente = new ArrayList<>();
 		
@@ -65,6 +65,14 @@ public class Banco {
 	
 	public void addProduto(Produto produto) {
 		produtos.add(produto);
+	}
+	
+	public void removerProdutoLivro(Produto produtoParaRemover) {
+	    this.produtos.removeIf(produto -> produto.getLivro().getNome().equals(produtoParaRemover.getLivro().getNome()));
+	}
+	
+	public void removerProdutoCaderno(Produto produtoParaRemover) {
+	    this.produtos.removeIf(produto -> produto.getCaderno().getTipo().equals(produtoParaRemover.getCaderno().getTipo()));
 	}
 	
 	public void addPedido(Pedido pedido) {

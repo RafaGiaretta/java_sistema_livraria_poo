@@ -29,6 +29,6 @@ public class Livro {
 	}
 
 	public String toString() {
-		return "Nome: " + nome + ", Genero: " + genero;
+		return "Nome: " + nome + ", Genero: " + genero + ". ";
 	}
 }

@@ -5,28 +5,33 @@ import java.util.List;
 
 public class Pedido {
 
-	private String codigo;
+	private int codigo;
 	private Cliente cliente;
-	private List<Produto> produtos;
+	public List<Produto> produtos = new ArrayList<>();
 	private Double total;
 	
 	
-	public void produtos() {
-		this.produtos = new ArrayList<>();	}
-	 
 
-	public Pedido(String codigo, Cliente cliente, List<Produto> produtos) {
+	public Pedido(Integer codigo, Cliente cliente, List<Produto> produtos) {
 		this.codigo = codigo;
 		this.cliente = cliente;
 		this.produtos = produtos;
 	}
+	public Pedido(Integer codigo, Cliente cliente) {
+		this.codigo = codigo;
+		this.cliente = cliente;
+	}
 
-	public String getCodigo() {
+	public Pedido(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+	
+	public Integer getCodigo() {
 		return codigo;
 	}
 
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
@@ -39,8 +44,11 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-
+	
+	public void addProduto(Produto produto) {
+		this.produtos.add(produto);
+	}
+	
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -60,7 +68,13 @@ public class Pedido {
 		this.total = total;
 	}
 	
-	
+	public String toString() {
+		return 	"Codigo: " +  codigo + ", " +
+				"Cliente: " + cliente + ", " + 
+				"Produtos: " + produtos + ", " + 
+				"Total: " + total + ".";
+
+	}
 
 	
 }

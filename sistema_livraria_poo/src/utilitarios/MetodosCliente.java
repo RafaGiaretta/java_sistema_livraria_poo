@@ -49,14 +49,14 @@ public class MetodosCliente {
 	
 	public static void cadastroCliente(Banco banco){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Nome: ");
+		System.out.println("\nNome: ");
 		String nome = sc.nextLine();
 		System.out.println("CPF: ");
 		String cpf = sc.nextLine();
 		Cliente cliente = new Cliente(nome, cpf);
 		banco.novoCliente(cliente);
 		
-		System.out.println("Deseja cadastrar outro CLIENTE? (S/N)");
+		System.out.println("\nDeseja cadastrar outro CLIENTE? (S/N)");
 		String continuar = sc.next();
 		if (continuar.equals("S") || continuar.equals("s")) {
 			cadastroCliente(banco);			
@@ -77,6 +77,7 @@ public class MetodosCliente {
 		menuClientes(banco);
 		sc.close();
 	}
+	
 
 	public static void removerCliente(Banco banco) {
 		Scanner sc = new Scanner(System.in);
@@ -87,13 +88,35 @@ public class MetodosCliente {
 				banco.removerCliente(cliente);
 				System.out.println("Cliente removido com sucesso!");
 				Start.menu(banco);
-			}
-			else {
-				System.out.println("CPF nao encontrado!");
-				menuClientes(banco);
+				break;
 			}
 		}
+		System.out.println("CPF nao encontrado!");
+		System.out.println("Aperte ENTER para voltar ao menu.");
+		sc.nextLine();
+		menuClientes(banco);
 		sc.close();
+	}
+	
+	public static Cliente consultarCPF(Banco banco, Scanner sc ) {
+		System.out.println("Entre com o CPF do CLIENTE: ");
+		String cpf = sc.nextLine();
+		for (Cliente cliente : banco.getCliente()) {
+			if (cliente.getCpf().equals(cpf)) {				
+				System.out.println("Cliente encontrado!\n" + banco.getCliente());			
+				return cliente;
+			}
+			else {
+				System.out.println("CPF invalido!");
+				System.out.println("Aperte ENTER para tentar novamente.");
+				sc.nextLine();
+				consultarCPF(banco, sc );
+				sc.close();
+			}
+			
+		}
+		return null;
+
 	}
 
 
